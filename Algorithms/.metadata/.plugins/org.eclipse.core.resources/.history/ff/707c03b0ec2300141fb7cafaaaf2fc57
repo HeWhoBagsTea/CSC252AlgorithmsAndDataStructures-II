@@ -32,8 +32,6 @@ public class Driver {
 //			System.out.print(data[i] >> 2);
 //		}
 		
-		
-//-----------------------testInt-----------------------------------------------		
 		HuffmanTree ht = new HuffmanTree(ba);
 		
 		HuffmanCompressor hc = new HuffmanCompressor();
@@ -48,7 +46,7 @@ public class Driver {
 			System.out.print(decompressed[i] + " ");
 		
 		
-//-----------------------testStr-----------------------------------------------		
+		
 //		HuffmanTree ht = new HuffmanTree(strBa);
 //		HuffmanCompressor hc = new HuffmanCompressor();
 //		byte[] compressed = hc.compress(ht, testStr);
@@ -57,7 +55,7 @@ public class Driver {
 //			System.out.print(compressed[i] + " ");
 //		
 //		System.out.println();
-//		byte[] decompressed = hc.decompress(ht, testStr.length, compressed);
+//		byte[] decompressed = hc.decompress(ht, 48, compressed);
 //		for(int i = 0; i < decompressed.length; i++)
 //			System.out.print(decompressed[i] + " ");
 //		
