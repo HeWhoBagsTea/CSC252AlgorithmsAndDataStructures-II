@@ -1,0 +1,51 @@
+import java.util.ArrayList;
+import java.util.List;
+
+
+public class HuffmanCompressor {
+	public byte[] compress(HuffmanTree tree, byte[] b) {
+		Bits bits = new Bits();
+
+		for(int i = 0; i < b.length; i++) 
+			tree.fromByte(b[i], bits);
+
+		int padding = 8 - (bits.size() % 8);
+		
+		byte[] compressedBytes = new byte[bits.size() + padding];
+		System.out.println("uncompressedLength: " + bits.size());
+		for(int i = 0; i < compressedBytes.length; i++) {
+			if(!bits.isEmpty()) {
+				if(bits.poll())
+					compressedBytes[i] = 1;
+				else
+					compressedBytes[i] = 0;
+			}
+		}
+
+		return compressedBytes;
+	}
+
+	public byte[] decompress(HuffmanTree tree, int uncompressedLength, byte[] b) {
+		Bits bits = new Bits();
+		for(int i = 0; i < uncompressedLength; i++) {
+			if(b[i] == 0)
+				bits.add(false);
+			else
+				bits.add(true);
+		}
+		
+		List<Byte> bl = new ArrayList<Byte>();
+		
+		while(!bits.isEmpty()) {
+			bl.add(tree.toByte(bits));
+		}
+		
+		byte[] decompressedBytes = new byte[bl.size()];
+		
+		for(int i = 0; i < bl.size(); i++)
+			decompressedBytes[i] = bl.get(i);
+		
+		return decompressedBytes;
+	}
+
+}
