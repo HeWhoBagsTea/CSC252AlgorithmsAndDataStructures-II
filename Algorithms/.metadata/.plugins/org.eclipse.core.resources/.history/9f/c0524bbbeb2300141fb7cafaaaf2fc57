@@ -12,6 +12,7 @@ public class HuffmanCompressor {
 		int padding = 8 - (bits.size() % 8);
 		
 		byte[] compressedBytes = new byte[bits.size() + padding];
+		System.out.println("uncompressedLength: " + bits.size());
 		for(int i = 0; i < compressedBytes.length; i++) {
 			if(!bits.isEmpty()) {
 				if(bits.poll())
@@ -26,7 +27,7 @@ public class HuffmanCompressor {
 
 	public byte[] decompress(HuffmanTree tree, int uncompressedLength, byte[] b) {
 		Bits bits = new Bits();
-		byte[] decompressedBytes = new byte[uncompressedLength];
+		byte[] decompressedBytes = new byte[5];
 		for(int i = 0; i < b.length; i++) {
 			if(b[i] == 0)
 				bits.add(false);
@@ -40,7 +41,7 @@ public class HuffmanCompressor {
 			bl.add(tree.toByte(bits));
 		}
 		
-		for(int i = 0; i < uncompressedLength; i++)
+		for(int i = 0; i < bl.size(); i++)
 			decompressedBytes[i] = bl.get(i);
 		
 		return decompressedBytes;

@@ -41,7 +41,7 @@ public class Driver {
 			System.out.print(compressed[i] + " ");
 		
 		System.out.println();
-		byte[] decompressed = hc.decompress(ht, testInt.length, compressed);
+		byte[] decompressed = hc.decompress(ht, 13, compressed);
 		for(int i = 0; i < decompressed.length; i++)
 			System.out.print(decompressed[i] + " ");
 		

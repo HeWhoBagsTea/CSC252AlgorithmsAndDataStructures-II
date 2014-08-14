@@ -15,7 +15,7 @@ public class Driver {
 		byte[] strBa = str1.getBytes();
 		byte[] ba = new byte[] { -45, 56, 67, 78, 89, 12, 23, 34, 45, 23, 45, 67, 45 };
 		byte[] testStr = str2.getBytes();
-		byte[] testInt = new byte[] {-45, 45, 67, 67, 23};
+		byte[] testInt = new byte[] {-45, 45, 67, 67, 23, 23};
 //		ht.printNodes();
 		
 //		Path path = Paths.get("compressed.huff");
