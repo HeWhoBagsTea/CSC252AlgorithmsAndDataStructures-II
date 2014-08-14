@@ -11,34 +11,32 @@ public class Driver {
 		byte[] ba = new byte[] { 45, 56, 67, 78, 89, 12, 23, 34, 45, 23, 45, 67, 45 };
 		byte[] testStr = str2.getBytes();
 		byte[] testInt = new byte[] {45, 45, 67, 67, 23};
+//		HuffmanTree ht = new HuffmanTree(strBa);
+		HuffmanTree ht = new HuffmanTree(ba);
 //		ht.printNodes();
 		
-		HuffmanTree ht = new HuffmanTree(ba);
-		
+//		Bits bits = new Bits();
+//		bits.add(true);
+//		bits.add(true);
+//		bits.add(true);
+//		bits.add(false);
+//		System.out.println(ht.toByte(bits));
+//		ht.fromByte(bit, bits);
 		
 		HuffmanCompressor hc = new HuffmanCompressor();
+//		byte[] compressed = hc.compress(ht, testStr);
 		byte[] compressed = hc.compress(ht, testInt);
 		
+//		System.out.println();
 		for(int i = 0; i < compressed.length; i++)
 			System.out.print(compressed[i] + " ");
 		
+		
 		System.out.println();
-		byte[] decompressed = hc.decompress(ht, 13, compressed);
+		byte[] decompressed = hc.decompress(ht, 48, compressed);
 		for(int i = 0; i < decompressed.length; i++)
 			System.out.print(decompressed[i] + " ");
-//		
-//		HuffmanTree ht = new HuffmanTree(strBa);
-//		HuffmanCompressor hc = new HuffmanCompressor();
-//		byte[] compressed = hc.compress(ht, testStr);
-//		
-//		for(int i = 0; i < compressed.length; i++)
-//			System.out.print(compressed[i] + " ");
-//		
-//		System.out.println();
-//		byte[] decompressed = hc.decompress(ht, 48, compressed);
-//		for(int i = 0; i < decompressed.length; i++)
-//			System.out.print(decompressed[i] + " ");
-//		
+		
 //		System.out.println();
 //		char[] ascii = hc.convertAscii(decompressed);
 //		for(int i = 0; i < ascii.length; i++)
