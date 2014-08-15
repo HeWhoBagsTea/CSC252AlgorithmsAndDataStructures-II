@@ -82,7 +82,7 @@ public class Driver {
 	    }
 
 	    // Create a buffered image with transparency
-	    BufferedImage bimage = new BufferedImage(100, 100, BufferedImage.TYPE_INT_ARGB);
+	    BufferedImage bimage = new BufferedImage(10, 10, BufferedImage.TYPE_INT_ARGB);
 
 	    // Draw the image on to the buffered image
 	    Graphics2D bGr = bimage.createGraphics();
