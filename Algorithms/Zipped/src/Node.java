@@ -3,6 +3,7 @@ public class Node<T> {
 	
 	Node<T> left;
 	Node<T> right;
+	Node<T> next;
 	Node<T> parent;
 	T value = null;
 	int weight = 1;
@@ -13,6 +14,7 @@ public class Node<T> {
 		left = null;
 		right = null;
 		parent = null;
+		next = null;
 		name = value.toString();
 	}
 	
@@ -23,6 +25,7 @@ public class Node<T> {
 		parent = null;
 		left.parent = this;
 		right.parent = this;
+		next = null;
 		weight = n1.weight + n2.weight;
 		name = left.name + "" + right.name;
 	}

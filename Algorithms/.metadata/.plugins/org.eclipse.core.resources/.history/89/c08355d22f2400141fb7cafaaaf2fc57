@@ -1,0 +1,78 @@
+import java.util.Iterator;
+
+public class PriorityQueue<T> implements Queue<T> {
+
+	Node<T> head;
+	Node<T> tail;
+
+	public Iterator<T> iterator() {
+		return null;
+	}
+
+	public T poll() {
+		Node<T> temp = head;
+
+		if(head != null)
+			head = head.next;
+
+		return (T) temp;
+	}
+
+	@SuppressWarnings("unchecked")
+	public boolean offer(Node t) {
+		boolean valueAdded = false;
+		Node newNode = new Node(t);
+
+		if(head == null)
+		{
+			head = newNode;
+			tail = head;
+		}
+		else if(t.weight < head.weight) //<=0
+		{
+			Node temp = head;
+			head = newNode;
+			head.next = temp;
+		}
+		else
+		{
+			if(head.next.value != null)
+			{
+				Node current = head.next;
+				Node previous = head; 
+				do
+					if(t.weight > current.weight) //=1
+					{
+						previous = current;
+						current = current.next;
+					}
+					else if(t.weight < current.weight) //<= 0
+					{
+						Node temp = newNode;
+						temp.next = current;
+						previous.next = temp;
+						
+					}
+				while(current.next != null);
+			}
+			else
+			{
+				tail.next = newNode;
+				tail = tail.next;
+			}			
+		}
+		
+		valueAdded = true;
+		return valueAdded;
+	}
+
+	public T peek() {
+		return (T) head.value;
+	}
+
+	@Override
+	public boolean offer(T t) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+}

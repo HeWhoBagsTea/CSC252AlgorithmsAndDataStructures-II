@@ -7,6 +7,7 @@ public class HuffmanTree {
 	private byte[] byteArray;
 	private List<Node> huffmanNodes = new ArrayList<Node>();
 	private List<Node> listOfNodes = new ArrayList<Node>();
+	private PriorityQ pq = new PriorityQ();
 
 	HuffmanTree(byte[] byteArray) {
 		this.byteArray = byteArray;
@@ -27,44 +28,25 @@ public class HuffmanTree {
 				huffmanNodes.add(nextToBeAdded);
 			}
 		}
-
-		sortNodes();
-		buildTree();
-	}
-
-	private void sortNodes() {
-		List<Node> temp = new ArrayList<Node>();
-		temp.addAll(huffmanNodes);
-		huffmanNodes.clear();
-
-		int smallest = Integer.MAX_VALUE;
-		int index = Integer.MAX_VALUE;
-		while(!temp.isEmpty()){
-			smallest = Integer.MAX_VALUE;
-			index = Integer.MAX_VALUE;
-			for(int i = 0; i < temp.size(); i++){
-				if(temp.get(i).weight < smallest){
-					smallest = temp.get(i).weight;
-					index = i;
-				}
-			}
-			huffmanNodes.add(temp.get(index));
-			temp.remove(index);
+		
+		for(int i = 0; i < huffmanNodes.size(); i++) {
+			pq.offer(huffmanNodes.get(i));
 		}
+
+		buildTree();
 	}
 
 	private void buildTree() {
 		Node pull1 = null;
 		Node pull2 = null;
-
-		while(huffmanNodes.size() > 1) {
-			pull1 = huffmanNodes.get(0);
-			huffmanNodes.remove(0);
-			pull2 = huffmanNodes.get(0);
-			huffmanNodes.remove(0);
-			huffmanNodes.add(new Node(pull1, pull2));
-			sortNodes();
-		}
+		
+		do {
+			pull1 = pq.poll();
+			pull2 = pq.poll();
+			pq.offer(new Node(pull1, pull2));
+		} while(pq.head != pq.tail);
+		huffmanNodes.clear();
+		huffmanNodes.add(pq.poll());
 	}
 
 	public byte toByte(Bits bits) {

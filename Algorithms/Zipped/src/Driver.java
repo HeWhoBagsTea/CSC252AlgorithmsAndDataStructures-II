@@ -3,7 +3,6 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
-
 public class Driver {
 
 	/**
@@ -34,37 +33,38 @@ public class Driver {
 		
 		
 //-----------------------testInt-----------------------------------------------		
-		HuffmanTree ht = new HuffmanTree(ba);
-		
-		HuffmanCompressor hc = new HuffmanCompressor();
-		byte[] compressed = hc.compress(ht, testInt);
-		
-		for(int i = 0; i < compressed.length; i++)
-			System.out.print(compressed[i] + " ");
-		
-		System.out.println();
-		byte[] decompressed = hc.decompress(ht, testInt.length, compressed);
-		for(int i = 0; i < decompressed.length; i++)
-			System.out.print(decompressed[i] + " ");
-		
-		
-//-----------------------testStr-----------------------------------------------		
-//		HuffmanTree ht = new HuffmanTree(strBa);
+//		HuffmanTree ht = new HuffmanTree(ba);
+//		
 //		HuffmanCompressor hc = new HuffmanCompressor();
-//		byte[] compressed = hc.compress(ht, testStr);
+//		byte[] compressed = hc.compress(ht, testInt);
 //		
 //		for(int i = 0; i < compressed.length; i++)
 //			System.out.print(compressed[i] + " ");
 //		
 //		System.out.println();
-//		byte[] decompressed = hc.decompress(ht, testStr.length, compressed);
+//		byte[] decompressed = hc.decompress(ht, testInt.length, compressed);
 //		for(int i = 0; i < decompressed.length; i++)
 //			System.out.print(decompressed[i] + " ");
-//		
-//		System.out.println();
-//		char[] ascii = hc.convertAscii(decompressed);
-//		for(int i = 0; i < ascii.length; i++)
-//			System.out.print(ascii[i]);
+		
+		
+//-----------------------testStr-----------------------------------------------		
+		HuffmanTree ht = new HuffmanTree(strBa);
+		HuffmanCompressor hc = new HuffmanCompressor();
+		byte[] compressed = hc.compress(ht, testStr);
+		
+		for(int i = 0; i < compressed.length; i++)
+			System.out.print(compressed[i] + " ");
+		
+		System.out.println();
+		byte[] decompressed = hc.decompress(ht, testStr.length, compressed);
+		for(int i = 0; i < decompressed.length; i++)
+			System.out.print(decompressed[i] + " ");
+		
+		System.out.println();
+		char[] ascii = hc.convertAscii(decompressed);
+		for(int i = 0; i < ascii.length; i++)
+			System.out.print(ascii[i]);
+		
 	}
 
 }
