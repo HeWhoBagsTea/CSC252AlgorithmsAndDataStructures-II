@@ -1,0 +1,14 @@
+public class Driver {
+
+	public static void main(String[] args) {		
+		AVLBasedPriorityQueue<Integer> avl = new AVLBasedPriorityQueue<Integer>();
+		HeapBasedPriorityQueue<Integer> heap = new HeapBasedPriorityQueue<Integer>();
+		
+		heap.offer(3);
+		
+		for(int i = 0; i < heap.listOfNodes.size(); i++) {
+			System.out.println(heap.listOfNodes.get(i));
+		}
+	}
+
+}

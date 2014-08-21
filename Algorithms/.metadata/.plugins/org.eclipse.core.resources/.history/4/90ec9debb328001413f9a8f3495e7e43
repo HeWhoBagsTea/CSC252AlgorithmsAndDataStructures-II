@@ -1,0 +1,20 @@
+
+public class AVLBasedPriorityQueue<T extends Comparable> {
+	Node root = null;
+	
+	
+	public boolean offer(T data) {
+		return false;
+		
+	}
+
+	public T peek() {
+		return null;
+		
+	}
+	
+	public T poll() {
+		return null;
+		
+	}
+}

@@ -1,0 +1,16 @@
+
+public class Node<T> {
+	Node<T> left;
+	Node<T> right;
+	T value;
+	
+	Node(T value) {
+		this.value = value;
+		this.left = null;
+		this.right = null;
+	}
+	
+	public void printChildren() {
+		System.out.println("Left Child:" + left.value + " Right Child:" + right.value);
+	}
+}

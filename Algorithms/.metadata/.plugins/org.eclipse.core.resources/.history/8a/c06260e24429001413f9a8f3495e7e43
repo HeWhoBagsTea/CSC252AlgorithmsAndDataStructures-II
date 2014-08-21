@@ -1,0 +1,117 @@
+import java.util.ArrayList;
+import java.util.List;
+
+
+public class HeapBasedPriorityQueue<T extends Comparable> {
+	List<Node<T>> listOfNodes = new ArrayList<Node<T>>();
+
+	public boolean offer(T data) {
+		boolean added = false;
+		Node<T> offered = new Node<T>(data);
+
+		if(listOfNodes.isEmpty()) {
+			listOfNodes.add(offered);
+			listOfNodes.add(offered);
+			added = true;
+		}
+		else {
+			if(listOfNodes.get((listOfNodes.size())/2).left == null) {
+				listOfNodes.get((listOfNodes.size())/2).left = offered;
+				listOfNodes.add(offered);
+				added = true;
+			}
+			else if(listOfNodes.get((listOfNodes.size())/2).right == null) {
+				listOfNodes.get((listOfNodes.size())/2).right = offered;
+				listOfNodes.add(offered);
+				added = true;
+			}
+			
+			siftUp(offered);
+		}
+
+		return added;
+	}
+
+	private void siftUp(Node<T> n) {
+		Node<T> temp = n;
+		int indexOf = listOfNodes.indexOf(n);
+		if(n.value.compareTo(listOfNodes.get((listOfNodes.size() - 1)/2).value) > 0) {
+			temp = listOfNodes.get(listOfNodes.size()/2);
+			temp.left = n.left;
+			temp.right = n.right;
+			if(temp.left == n) {
+				n.left = temp;
+				n.right = temp.right;
+			}
+			else {
+				n.right = temp;
+				n.left = temp.left;
+			}
+			
+			listOfNodes.set(listOfNodes.indexOf(temp), n);
+			listOfNodes.set(indexOf, temp);
+		}
+
+	}
+
+	private void siftDown(Node<T> n) {
+
+	}
+
+	public T peek() {
+		return listOfNodes.get(1).value;
+	}
+
+	public T poll() {
+		return null;
+
+	}
+
+	public void preOrder() {
+		preOrder(listOfNodes.get(1));
+		System.out.println();
+	}
+
+	public void postOrder() {
+		postOrder(listOfNodes.get(1));
+		System.out.println();
+	}
+
+	public void inOrder() {
+		inOrder(listOfNodes.get(1));
+		System.out.println();
+	}
+
+	private void preOrder(Node<T> n)
+	{
+		if(n.left != null)
+			preOrder(n.left);
+
+		if(n.right != null)
+			preOrder(n.right);
+
+		System.out.print(n.value + " ");
+	}
+
+	private void inOrder(Node<T> n)
+	{
+		if(n.left != null)
+			inOrder(n.left);
+
+		System.out.print(n.value + " ");
+
+		if(n.right != null)
+			inOrder(n.right);
+	}
+
+	private void postOrder(Node<T> n)
+	{
+		if(n.right != null)
+			postOrder(n.right);
+
+		if(n.left != null)
+			postOrder(n.left);
+
+		System.out.print(n.value + " ");
+	}
+}

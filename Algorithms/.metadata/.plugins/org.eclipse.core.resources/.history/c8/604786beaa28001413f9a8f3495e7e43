@@ -1,0 +1,56 @@
+
+public class HeadBasedPriorityQueue<T> {
+	HeadBasedNode<T> head;
+	HeadBasedNode<T> tail;
+	
+	// add value into the right place in the heap
+	boolean offer(T data) {
+		HeadBasedNode<T> offered = new HeadBasedNode<T>(data);
+		HeadBasedNode<T> checkAgainst = head;
+		HeadBasedNode<T> temp = head;
+		boolean added = false;
+		boolean already = false;
+		
+		if(head == null) {
+			head = offered;
+			tail = head;
+			added = true;
+		}
+		
+		while(!added) {
+			if(offered.weight > checkAgainst.weight) {
+				temp = checkAgainst;
+				head = offered;
+				head.next = checkAgainst;
+				added = true;
+			} 
+			else if(offered.weight == checkAgainst.weight && offered.value == checkAgainst.value) {
+				checkAgainst.weight += 1;
+				System.out.println("Already Included");
+				added = true;
+			}
+			else if(offered.weight <= checkAgainst.weight) {
+				
+			}
+		}
+		
+		
+		return added;
+	}
+
+	// see, but do not remove the highest priority value
+	boolean peek() {
+		if(head == tail.next) return false;
+		System.out.println(head.value);
+		return true;
+	}
+	
+	public boolean offer(){
+		if(head == tail.next) return false;
+		System.out.println(head.value);
+		head = head.next;
+		return true;
+	}
+	
+}
+

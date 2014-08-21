@@ -1,0 +1,16 @@
+import java.util.ArrayList;
+import java.util.List;
+
+
+public class Driver {
+
+	public static void main(String[] args) {		
+		AVLBasedPriorityQueue<Integer> avl = new AVLBasedPriorityQueue<Integer>();
+		avl.offer(2);
+		avl.offer(1);
+		avl.offer(3);
+		
+		System.out.println(avl.root.value);
+	}
+
+}
