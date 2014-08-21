@@ -2,12 +2,15 @@
 public class Node<T> {
 	Node<T> left;
 	Node<T> right;
+	Node<T> parent;
+	int balanceFactor = 0;
 	T value;
 	
 	Node(T value) {
 		this.value = value;
 		this.left = null;
 		this.right = null;
+		this.parent = null;
 	}
 	
 	public void printChildren() {
@@ -23,6 +26,6 @@ public class Node<T> {
 		else
 			rightValue = right.value.toString();
 		
-		System.out.println("Left Child:" + leftValue + " Right Child:" + rightValue);
+		System.out.println("Parent:" + this.value + " Left Child:" + leftValue + " Right Child:" + rightValue);
 	}
 }

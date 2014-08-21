@@ -1,0 +1,29 @@
+public class Driver {
+
+	public static void main(String[] args) {		
+		AVLBasedPriorityQueue<Integer> avl = new AVLBasedPriorityQueue<Integer>();
+		HeapBasedPriorityQueue<Integer> heap = new HeapBasedPriorityQueue<Integer>();
+		
+		
+	//---------------Heap Test----------------\\
+	heap.offer(13);
+	heap.offer(15);
+	heap.offer(20);
+	heap.offer(5);
+	heap.offer(7);
+	heap.offer(11);
+	heap.offer(23);
+	
+	heap.inOrder();
+	heap.printList();
+		
+		
+	//----------------AVL Test----------------\\
+		
+		
+		
+		
+		
+	}
+
+}

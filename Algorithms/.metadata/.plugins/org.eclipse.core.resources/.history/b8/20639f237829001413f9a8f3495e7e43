@@ -1,0 +1,40 @@
+
+public class Node<T> {
+	Node<T> left;
+	Node<T> right;
+	Node<T> parent;
+	T value;
+	
+	Node(T value) {
+		this.value = value;
+		this.left = null;
+		this.right = null;
+		this.parent = null;
+	}
+	
+	public void addLeft(Node<T> n) {
+		this.left = n;
+		this.left.parent = this;
+	}
+	
+	public void addRight(Node<T> n) {
+		this.right = n;
+		this.right.parent = this;
+	}
+	
+	public void printChildren() {
+		String leftValue;
+		String rightValue;
+		
+		if(left == null || left.value == null)
+			leftValue = "null";
+		else
+			leftValue = left.value.toString();
+		if(right == null || right.value == null)
+			rightValue = "null";
+		else
+			rightValue = right.value.toString();
+		
+		System.out.println("Left Child:" + leftValue + " Right Child:" + rightValue);
+	}
+}

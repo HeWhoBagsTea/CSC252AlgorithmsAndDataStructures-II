@@ -3,7 +3,7 @@ import java.util.List;
 
 
 public class HeapBasedPriorityQueue<T extends Comparable> {
-	List<Node<T>> listOfNodes = new ArrayList<Node<T>>();
+	private List<Node<T>> listOfNodes = new ArrayList<Node<T>>();
 
 	public boolean offer(T data) {
 		boolean added = false;
@@ -25,7 +25,7 @@ public class HeapBasedPriorityQueue<T extends Comparable> {
 				listOfNodes.add(offered);
 				added = true;
 			}
-
+			setUpChildren();
 			siftUp(offered);
 		}
 
@@ -34,12 +34,15 @@ public class HeapBasedPriorityQueue<T extends Comparable> {
 
 	private void siftUp(Node<T> n) {
 		int indexOf = listOfNodes.indexOf(n);
-		if(n.value.compareTo(listOfNodes.get((listOfNodes.size() - 1)/2).value) > 0) {
-			listOfNodes.set(indexOf, listOfNodes.get((listOfNodes.size() - 1)/2));
-			listOfNodes.set((listOfNodes.size() - 1) / 2, n);
 
-			setUpChildren();
-			siftUp(n);
+		if(indexOf > 1) {
+			if(n.value.compareTo(listOfNodes.get((indexOf - 1)/2).value) > 0) {
+				listOfNodes.set(indexOf, listOfNodes.get((indexOf - 1)/2));
+				listOfNodes.set(indexOf/2, n);
+
+				setUpChildren();
+				siftUp(n);
+			}
 		}
 	}
 
@@ -97,6 +100,13 @@ public class HeapBasedPriorityQueue<T extends Comparable> {
 
 	public void postOrder() {
 		postOrder(listOfNodes.get(1));
+		System.out.println();
+	}
+
+	public void printList() {
+		for(int i = 1; i < listOfNodes.size(); i++) {
+			System.out.print(listOfNodes.get(i).value + " ");
+		}
 		System.out.println();
 	}
 

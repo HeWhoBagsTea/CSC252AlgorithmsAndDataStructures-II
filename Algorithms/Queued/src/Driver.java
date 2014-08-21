@@ -4,36 +4,41 @@ public class Driver {
 		AVLBasedPriorityQueue<Integer> avl = new AVLBasedPriorityQueue<Integer>();
 		HeapBasedPriorityQueue<Integer> heap = new HeapBasedPriorityQueue<Integer>();
 		
-		heap.offer(2);
-		heap.offer(8);
-		heap.offer(6);
-		heap.offer(4);
-		heap.offer(5);
-		heap.offer(1);
-		heap.offer(3);
-//		System.out.println(heap.listOfNodes.size());
-//		for(int i = 1; i < heap.listOfNodes.size(); i ++)
-//			System.out.print(heap.listOfNodes.get(i).value + " ");
-//		System.out.println();
-		heap.poll();
-//		
-//		System.out.println(heap.listOfNodes.size());
-//		for(int i = 1; i < heap.listOfNodes.size(); i ++)
-//			System.out.print(heap.listOfNodes.get(i).value + " ");
 		
-		System.out.println();
-		heap.inOrder();
+	//---------------Heap Test----------------\\
+//	System.out.println("-----Heap Tests-----");	
+//	heap.offer(13);
+//	heap.offer(15);
+//	heap.offer(20);
+//	heap.offer(5);
+//	heap.offer(7);
+//	heap.offer(11);
+//	heap.offer(23);
+//
+//	System.out.println("---Initial Heap Array---");
+//	heap.printList();
+//	System.out.println("\n---Peek test--- \nFirst peek: " + heap.peek() + "\nSecond peek: " + heap.peek());
+//	System.out.println("\n---Poll test--- \nFirst poll: " + heap.poll() + " \nNew heap array: ");
+//	heap.printList();
+//	System.out.println("Second poll: " + heap.poll() + " \nNew heap array: ");
+//	heap.printList();
+//	System.out.println();
 		
-//		int test = 1;
-//		System.out.println(heap.listOfNodes.get(test).value);
-//		heap.listOfNodes.get(test).printChildren();
-		
-//		for(int i = 1; i < heap.listOfNodes.size(); i++)
-//			System.out.print(heap.listOfNodes.get(i).value + " ");
-//		
-//		System.out.println();
-//		heap.listOfNodes.get(1).printChildren();
-//		System.out.println(heap.listOfNodes.get(1).value);
+	//----------------AVL Test----------------\\
+	System.out.println("-----AVL Tests-----");	
+	avl.offer(63);
+	avl.offer(57);
+	avl.offer(84);
+	avl.offer(30);
+	avl.offer(40);
+	avl.offer(23);
+	avl.offer(15);
+	avl.offer(11);
+	
+	avl.inOrder();
+	avl.poll();
+	avl.inOrder();
+	
 	}
 
 }
