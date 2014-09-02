@@ -166,20 +166,20 @@ public class DotsAndBoxes {
 					ends++;
 				}
 				if(graph.degree(theList.get(i).get(j)) > 2) {
-					isAChain = false;
+					//isAChain = false;
 				}
 			}
 
-			if(isAChain && ends == 2  && theList.get(i).size() >= 2)
-				chainCount++;
+			if(isAChain && ends >= 2  && theList.get(i).size() >= 2)
+				chainCount +=ends/2;
 		}
 		
-//		for(int i = 0; i < theList.size(); i++) {
-//			for(int j = 0; j < theList.get(i).size(); j++) {
-//				System.out.print("Vert: " + theList.get(i).get(j) + " Degree" + graph.degree(theList.get(i).get(j)) + " ");
-//			}
-//			System.out.println();
-//		}
+		for(int i = 0; i < theList.size(); i++) {
+			for(int j = 0; j < theList.get(i).size(); j++) {
+				System.out.print("Vert: " + theList.get(i).get(j) + " Degree" + graph.degree(theList.get(i).get(j)) + " ");
+			}
+			System.out.println();
+		}
 		
 		return chainCount;
 	}

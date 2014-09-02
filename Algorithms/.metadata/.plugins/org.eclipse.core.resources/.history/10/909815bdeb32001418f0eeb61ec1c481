@@ -1,0 +1,90 @@
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
+
+
+public class Driver {
+
+	public static void main(String[] args) {
+//		DotsAndBoxes d = new DotsAndBoxes(3,3);
+//		d.countOpenChains();
+//		
+//		BfsGraphTraversal bfs = new BfsGraphTraversal();
+//		DfsGraphTraversal dfs = new DfsGraphTraversal();
+//		List<List<Integer>> theList = new ArrayList<List<Integer>>();
+//		
+//		theList = dfs.traverse(d.graph);
+//
+//		for(int i = 0; i < theList.size(); i++) {
+//			for(int j = 0; j < theList.get(i).size(); j++) {
+//				System.out.print(theList.get(i).get(j) + " ");
+//			}
+//			System.out.println();
+//		}
+		
+		
+		DotsAndBoxesTest test = new DotsAndBoxesTest();
+		test.testOwner(); //2 Passed
+		test.testDoubleCrosses(); //2 Passed
+		test.testCycle(); //2 Passed
+		test.testChains(); //1 Passed
+//		test.testTwoChains(); //2
+//		test.testInternalChains(); //2
+//		test.testInternalChain(); //1
+//		test.testNotAChain(); //0 0 0 Passed check again after seeing if all chain test pass
+		
+//		Scanner scan = new Scanner(System.in);
+//		DotsAndBoxes db = new DotsAndBoxes(3, 3);
+//		int player = 1;
+//		int x1 = 0, x2 = 0, y1 = 0, y2 = 0;
+//		int validMove = -1;
+//		
+//		db.drawLine(1, 2, 1, 3, 1);
+//		db.drawLine(1, 2, 1, 1, 1);
+//		db.drawLine(1, 2, 1, 1, 1);
+//
+//		System.out.println(db.graph.degree(6));
+//		
+//		
+//------------------------Dots and Boxes Game Start--------------------------------\\
+//
+//		while (db.areMovesLeft()) {
+//			System.out.println("-------------Current Scores-------------");
+//			System.out.println("| Player 1 score: " + db.score(1) + " Player 2 score: " + db.score(2) + " |");
+//			System.out.println("----------------------------------------");
+//			System.out.println("Player " + player + "'s turn.");
+//			validMove = -1;
+//			while(validMove < 0) {
+//				System.out.print("x1:");
+//				x1 = scan.nextInt();
+//				System.out.print("y1:");
+//				y1 = scan.nextInt();
+//				System.out.print("x2:");
+//				x2 = scan.nextInt();
+//				System.out.print("y2:");
+//				y2 = scan.nextInt();
+//
+//				validMove = db.drawLine(player, x1, y1, x2, y2);
+//			}
+//
+//			if (validMove == 0) {
+//				if(player == 1)
+//					player = 2;
+//				else
+//					player = 1;
+//			}
+//			
+//		}
+//
+//		System.out.println("Game Over. Thank you for playing!");
+//		System.out.println("--------------Final Scores--------------");
+//		System.out.println("| Player 1 score: " + db.score(1) + " Player 2 score: " + db.score(2) + " |");
+//		System.out.println("----------------------------------------");
+//		
+//------------------------Dots and Boxes Game End---------------------------------\\
+//		
+//		
+//		scan.close();
+	}
+
+}
