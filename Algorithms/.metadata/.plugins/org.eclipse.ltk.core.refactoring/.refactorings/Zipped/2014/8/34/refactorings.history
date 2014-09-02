@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename type &apos;Node&apos; to &apos;NodeOld&apos;&#x0D;&#x0A;- Original project: &apos;Zipped&apos;&#x0D;&#x0A;- Original element: &apos;Node&apos;&#x0D;&#x0A;- Renamed element: &apos;NodeOld&apos;&#x0D;&#x0A;- Update references to refactored element&#x0D;&#x0A;- Update textual occurrences in comments and strings" description="Rename type &apos;Node&apos;" flags="589830" id="org.eclipse.jdt.ui.rename.type" input="/src&lt;{Node.java[Node" matchStrategy="1" name="NodeOld" qualified="false" references="true" similarDeclarations="false" stamp="1408730654019" textual="false" version="1.0"/>
+</session>

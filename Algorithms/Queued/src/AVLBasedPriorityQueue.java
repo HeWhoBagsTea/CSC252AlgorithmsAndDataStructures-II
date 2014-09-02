@@ -60,14 +60,14 @@ public class AVLBasedPriorityQueue<T extends Comparable> {
 		}
 
 		previous.right = next.left;
-		if(next == root)
+		if(next == root) {
 			root = next.left;
+		}
 
 
-		setBalance();
-		rebalance();
-
-
+		//setBalance();
+		//rebalance();
+		
 		return next.value;
 	}
 
@@ -76,6 +76,12 @@ public class AVLBasedPriorityQueue<T extends Comparable> {
 	}
 
 	private void rebalance(Node<T> n) {
+		if(n.right != null)
+			rebalance(n.right);
+
+		if(n.left != null)
+			rebalance(n.left);
+		
 		if(n.balanceFactor > 1 || n.balanceFactor < -1) {
 			if(height(n.right) > height(n.left)) {
 				lRotation(n);
@@ -83,14 +89,7 @@ public class AVLBasedPriorityQueue<T extends Comparable> {
 			else {
 				rRotation(n);
 			}
-			rebalance(root);
-		}
-		else {
-			if(n.right != null)
-				rebalance(n.right);
-
-			if(n.left != null)
-				rebalance(n.left);
+			//rebalance(root);
 		}
 	}
 
@@ -138,7 +137,7 @@ public class AVLBasedPriorityQueue<T extends Comparable> {
 		setBalance();
 	}
 
-	private int height(Node<T> n) {
+	public int height(Node<T> n) {
 		if(n == null) return -1;
 
 		int left = height(n.left);
@@ -181,13 +180,13 @@ public class AVLBasedPriorityQueue<T extends Comparable> {
 
 	private void preOrder(Node<T> n)
 	{
+		System.out.print(n.value + " ");
 		if(n.left != null)
 			preOrder(n.left);
 
 		if(n.right != null)
 			preOrder(n.right);
 
-		System.out.print(n.value + " ");
 	}
 
 	private void inOrder(Node<T> n)
@@ -203,11 +202,11 @@ public class AVLBasedPriorityQueue<T extends Comparable> {
 
 	private void postOrder(Node<T> n)
 	{
-		if(n.right != null)
-			postOrder(n.right);
-
 		if(n.left != null)
 			postOrder(n.left);
+		
+		if(n.right != null)
+			postOrder(n.right);
 
 		System.out.print(n.value + " ");
 	}

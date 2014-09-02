@@ -1,4 +1,0 @@
-
-public class AVLBasedPriorityQueue<T extends Comparable> {
-
-}

@@ -1,32 +1,31 @@
 
 public class Node<T> {
-	
 	Node<T> left;
 	Node<T> right;
-	Node<T> next;
 	Node<T> parent;
-	T value = null;
-	int weight = 1;
-	String name;
+	int balanceFactor = 0;
+	T value;
 	
-	Node(T t) {
-		value = t;
-		left = null;
-		right = null;
-		parent = null;
-		next = null;
-		name = value.toString();
+	Node(T value) {
+		this.value = value;
+		this.left = null;
+		this.right = null;
+		this.parent = null;
 	}
 	
-	Node(Node n1, Node n2) {
-		value = null;
-		left = n1;
-		right = n2;
-		parent = null;
-		left.parent = this;
-		right.parent = this;
-		next = null;
-		weight = n1.weight + n2.weight;
-		name = left.name + "" + right.name;
+	public void printChildren() {
+		String leftValue;
+		String rightValue;
+		
+		if(left == null || left.value == null)
+			leftValue = "null";
+		else
+			leftValue = left.value.toString();
+		if(right == null || right.value == null)
+			rightValue = "null";
+		else
+			rightValue = right.value.toString();
+		
+		System.out.println("Parent:" + this.value + " Left Child:" + leftValue + " Right Child:" + rightValue);
 	}
 }

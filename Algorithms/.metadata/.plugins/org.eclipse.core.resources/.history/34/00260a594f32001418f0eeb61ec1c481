@@ -1,0 +1,152 @@
+import java.util.ArrayList;
+import java.util.List;
+
+
+public class DotsAndBoxes {
+	private int rows;
+	private int cols;
+	private int scoreP1;
+	private int scoreP2;
+	private int scoreBoard;
+	public Graph graph;
+
+	DotsAndBoxes(int rows, int columns) {
+		this.rows = rows + 1;
+		this.cols = columns + 1;
+		this.scoreP1 = 0;
+		this.scoreP2 = 0;
+		this.graph = new Graph((this.rows + 1) * (cols + 1));
+
+		for(int x = 1; x < cols; x ++) {
+			for(int y = 1; y < this.rows; y++) {
+				graph.addEdge(((cols + 1) * y) + x, ((cols + 1) * (y + 1)) + x, 1);
+				graph.addEdge(((cols + 1) * y) + x, ((cols + 1) * (y - 1)) + x, 1);
+				graph.addEdge(((cols + 1) * y) + x, ((cols + 1) * y) + (x + 1), 1);
+				graph.addEdge(((cols + 1) * y) + x, ((cols + 1) * y) + (x - 1), 1);
+			}
+		}
+
+		scoreBoard = pointsLeft();
+	}
+
+	// draws a line from (x1, y1) to (x2, y2) (0,0) is in the upper-left corner, returning how many points were earned, if any
+	public int drawLine(int player, int x1, int y1, int x2, int y2) {
+		int pointsScored = -1;
+		//		
+		//		if((player != 1 && player != 2) || x1 < 0 || x2 < 0 || y1 < 0 || y2 < 0 || x1 > cols || x2 > cols || y1 > rows || y2 > rows || (!(x2 == x1 && y2 == y1 + 1) && !(x2 == x1 && y2 == y1 - 1) && !(x2 == x1 + 1 && y2 == y1 ) && !(x2 == x1 - 1 && y2 == y1)) || graph.isEdge(((cols + 1) * y1) + x1, ((cols + 1) * y2) + x2) ) {
+		//			System.out.println("Invalid Move");
+		//			return pointsScored;
+		//		}
+		//		
+		//		graph.addEdge(((cols + 1) * y1) + x1, ((cols + 1) * y2) + x2, 1);
+		//		
+		//		pointsScored = 0;
+		//		//Scoring Stuff
+
+		int v = 0;
+		int w = 0;
+		int x = 0;
+		int y = 0;
+
+		if(x1 == x2) {
+			x = x1;
+			if(y1 > y2)
+				y = y1;
+			else
+				y = y2;
+
+			v = y * (rows + 1) + x;
+			w = v + 1;
+
+			graph.removeEdge(v, w);
+		}
+		else if(y1 == y2) {
+			y = y1;
+			if(x1 > x2)
+				x = x1;
+			else
+				x = x2;
+
+			v = y * (rows + 1) + x;
+			w = v + (rows + 1);
+
+			graph.removeEdge(v, w);
+		}
+		else {
+			System.out.println("Invalid Move");
+			return pointsScored;
+		}
+
+
+		pointsScored = scoreBoard - pointsLeft();
+		scoreBoard = pointsLeft();
+		if(player == 1)
+			scoreP1 += pointsScored;
+		if(player == 2)
+			scoreP2 += pointsScored;
+
+		return pointsScored;
+	}
+
+	// returns the score for a player
+	public int score(int player) {
+		if(player == 1) return scoreP1;
+		if(player == 2) return scoreP2;
+
+		System.out.println("Invalid Player");
+		return 0;
+	}
+
+	// returns whether or not there are any lines to be drawn
+	public boolean areMovesLeft() {
+		return scoreBoard != 0;
+	}
+
+	// returns the number of double-crosses on the board
+	public int countDoubleCrosses() {
+		List<List<Integer>> theList = new ArrayList<List<Integer>>();
+		BfsGraphTraversal bfs = new BfsGraphTraversal();
+		
+		theList = bfs.traverse(graph);
+		
+		int doubleCrossCount = 0;
+
+		for(int i = 0; i < theList.size(); i++) {
+			if(theList.get(i).size() == 2)
+				doubleCrossCount++;
+		}
+		
+		for(int i = 0; i < theList.size(); i++) {
+			for(int j = 0; j < theList.get(i).size(); j++) {
+				System.out.print(theList.get(i).get(j) + " ");
+			}
+			System.out.println();
+		}
+
+		return doubleCrossCount;
+	}
+
+	// returns the number of cycles on the board
+	public int countCycles() {
+		return 0;
+	}
+
+	// returns the number of open chains on the board
+	public int countOpenChains() {
+		return 0;
+	}
+
+	private int pointsLeft() {
+		int temp = 0;
+
+		for(int x = 1; x < cols; x ++) {
+			for(int y = 1; y < this.rows; y++) {
+				if(graph.degree(((cols + 1) * y) + x) != 0) {
+					temp++;
+				}
+			}
+		}	
+
+		return temp;
+	}
+}

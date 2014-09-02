@@ -5,17 +5,17 @@ import java.util.List;
 public class HuffmanTree {
 
 	private byte[] byteArray;
-	private List<Node> huffmanNodes = new ArrayList<Node>();
-	private List<Node> listOfNodes = new ArrayList<Node>();
+	private List<NodeOld> huffmanNodes = new ArrayList<NodeOld>();
+	private List<NodeOld> listOfNodes = new ArrayList<NodeOld>();
 	private PriorityQ pq = new PriorityQ();
 
 	HuffmanTree(byte[] byteArray) {
 		this.byteArray = byteArray;
 
-		Node<Byte> nextToBeAdded;
+		NodeOld<Byte> nextToBeAdded;
 		boolean included = false;
 		for(int i = 0; i < byteArray.length; i++) {
-			nextToBeAdded = new Node<Byte>(byteArray[i]);
+			nextToBeAdded = new NodeOld<Byte>(byteArray[i]);
 			included = false;
 			for(int j = 0; j < huffmanNodes.size(); j++) {
 				if(huffmanNodes.get(j).value == nextToBeAdded.value) {
@@ -37,26 +37,26 @@ public class HuffmanTree {
 	}
 
 	private void buildTree() {
-		Node pull1 = null;
-		Node pull2 = null;
+		NodeOld pull1 = null;
+		NodeOld pull2 = null;
 		
 		do {
 			pull1 = pq.poll();
 			pull2 = pq.poll();
-			pq.offer(new Node(pull1, pull2));
+			pq.offer(new NodeOld(pull1, pull2));
 		} while(pq.head != pq.tail);
 		huffmanNodes.clear();
 		huffmanNodes.add(pq.poll());
 	}
 
 	public byte toByte(Bits bits) {
-		Node currentNode = huffmanNodes.get(0);
+		NodeOld currentNode = huffmanNodes.get(0);
 		currentNode = toByte(currentNode, bits);
 		if(currentNode.value == null) return 0;
 		return (byte)currentNode.value;
 	}
 
-	private Node toByte(Node n, Bits bits) {
+	private NodeOld toByte(NodeOld n, Bits bits) {
 		if(n.left == null || bits.size() == 0) return n;
 		if(bits.poll())
 			return toByte(n.right, bits);
@@ -65,7 +65,7 @@ public class HuffmanTree {
 	}
 
 	public void fromByte(byte b, Bits bits) {
-		Node temp = new Node(b);
+		NodeOld temp = new NodeOld(b);
 		Bits tempBits = new Bits();
 		for(int i = 0; i < listOfNodes.size(); i++) {
 			if(listOfNodes.get(i).value == temp.value){
@@ -80,7 +80,7 @@ public class HuffmanTree {
 		}
 	}
 
-	private void fromByte(Node n, Bits bits) {
+	private void fromByte(NodeOld n, Bits bits) {
 		if(n.parent == null) return;
 		if(n.name == n.parent.left.name)
 			bits.add(false);
@@ -100,7 +100,7 @@ public class HuffmanTree {
 		System.out.println();
 	}
 
-	private void preOrder(Node n)
+	private void preOrder(NodeOld n)
 	{
 		if(n.left != null)
 			preOrder(n.left);

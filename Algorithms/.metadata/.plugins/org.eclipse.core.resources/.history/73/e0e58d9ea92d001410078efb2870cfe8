@@ -1,0 +1,49 @@
+
+public class Graph {
+
+	// initializes a graph of v vertices with no edges
+	Graph(int v){
+		
+	}
+	
+	// returns number of vertices (whether connected or not) in the graph
+	int vcount() {
+	} 
+	
+	// returns the number of edges in the graph
+	int ecount() {
+	}
+	
+	// returns the first vertex (in natural order) connected to vertex v.  If there are none, then vcount() is returned
+	int first(int v) {
+	}
+	
+	// returns the vertex (in natural order) connected to vertex v after vertex w.  If there are no more edges after w, vcount() is returned
+	int next(int v, int w) {
+	}
+	
+	// adds an edge between vertex v and vertex w.
+	void addEdge(int v, int w, int wt) {
+	}
+	
+	// removes edge between vertex v and vertex w.
+	void removeEdge(int v, int w) {
+	}
+	
+	// returns whether there is a connection between vertex v and vertex w
+	boolean isEdge(int v, int w) {
+	}
+	
+	// returns how many edges depart from vertex v
+	int degree(int v) {
+	}
+	
+	// returns any graph coloring for this vertex
+	int getMark(int v) {
+	}
+	
+	// colors vertex v color m
+	void setMark(int v, int m) {
+	}
+
+}

@@ -1,29 +1,29 @@
 
 public class PriorityQ {
-	Node head;
-	Node tail;
+	NodeOld head;
+	NodeOld tail;
 	
-	public Node poll() {
-		Node temp = head;
+	public NodeOld poll() {
+		NodeOld temp = head;
 		head = head.next;
 		return temp;
 	}
 	
-	public void offer(Node n) {
+	public void offer(NodeOld n) {
 		
 		if(head == null) {
 			head = n;
 			tail = head;
 		}
 		else if(n.weight <= head.weight) {
-			Node temp = head;
+			NodeOld temp = head;
 			head = n;
 			head.next = temp;
 		}
 		else if(n.weight > head.weight){
 			if(head.next != null) {
-				Node current = head.next;
-				Node previous = head;
+				NodeOld current = head.next;
+				NodeOld previous = head;
 				boolean added = false;
 				
 				while(!added) {
@@ -39,7 +39,7 @@ public class PriorityQ {
 					}
 					else if(n.weight <= current.weight) {
 						added= true;
-						Node temp = n;
+						NodeOld temp = n;
 						temp.next = current;
 						previous.next = temp;
 					}

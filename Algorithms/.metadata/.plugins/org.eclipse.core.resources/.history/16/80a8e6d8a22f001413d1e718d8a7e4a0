@@ -1,0 +1,25 @@
+import java.util.ArrayList;
+import java.util.List;
+
+
+public class DfsGraphTraversal {
+
+	public List<List<Integer>> traverse(Graph g) {
+		int count = 0;
+		int curr = 0;
+		int temp = 0;
+		List<List<Integer>> theList = new ArrayList<List<Integer>>();
+		
+		while(count < g.vcount()) {
+			List<Integer> queue = new ArrayList<Integer>();
+			List<Integer> bfsResult = new ArrayList<Integer>();
+			temp = 0;
+			
+			queue.add(g.first(curr));
+			
+			
+		}
+		
+		return theList;
+	}
+}
