@@ -104,7 +104,6 @@ public class DotsAndBoxes {
 
 	// returns the number of double-crosses on the board
 	public int countDoubleCrosses() {
-		resetMarks();
 		List<List<Integer>> theList = new ArrayList<List<Integer>>();
 		BfsGraphTraversal bfs = new BfsGraphTraversal();
 
@@ -122,7 +121,6 @@ public class DotsAndBoxes {
 
 	// returns the number of cycles on the board
 	public int countCycles() {
-		resetMarks();
 		List<List<Integer>> theList = new ArrayList<List<Integer>>();
 		BfsGraphTraversal bfs = new BfsGraphTraversal();
 
@@ -148,43 +146,6 @@ public class DotsAndBoxes {
 
 	// returns the number of open chains on the board
 	public int countOpenChains() {
-		resetMarks();
-		List<List<Integer>> theList = new ArrayList<List<Integer>>();
-		BfsGraphTraversal bfs = new BfsGraphTraversal();
-
-		theList = bfs.traverse(graph);
-		//markFringes();
-		int chainCount = 0;
-		int ends = 0;
-		boolean isAChain = true;
-		
-		for(int i = 0; i < theList.size(); i++) {
-			isAChain = true;
-			ends = 0;
-			for(int j = 0; j < theList.get(i).size(); j++) {
-				if(graph.degree(theList.get(i).get(j)) == 1) {
-					ends++;
-				}
-				if(graph.degree(theList.get(i).get(j)) > 2) {
-					isAChain = false;
-				}
-			}
-
-			if(isAChain && ends <= 2  && theList.get(i).size() >= 2)
-				chainCount++;
-		}
-		
-		for(int i = 0; i < theList.size(); i++) {
-			for(int j = 0; j < theList.get(i).size(); j++) {
-				System.out.print("Vert: " + theList.get(i).get(j) + " Degree" + graph.degree(theList.get(i).get(j)) + " ");
-			}
-			System.out.println();
-		}
-		
-		return chainCount;
-	}
-
-	private void markFringes() {
 		for(int x = 0; x <= cols; x ++) {
 			for(int y = 0; y <= this.rows; y++) {
 				
@@ -197,14 +158,11 @@ public class DotsAndBoxes {
 				
 				System.out.println((((cols + 1) * y) + x) + " " + graph.getMark(((cols + 1) * y) + x));
 			}
-		}		
+		}
+
+		return 0;
 	}
-	
-	private void resetMarks() {
-		for(int i = 0; i < graph.vcount(); i++)
-			graph.setMark(i, 0);
-	}
-	
+
 	private int pointsLeft() {
 		int temp = 0;
 

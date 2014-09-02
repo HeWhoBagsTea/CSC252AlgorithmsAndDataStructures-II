@@ -6,8 +6,8 @@ import java.util.Scanner;
 public class Driver {
 
 	public static void main(String[] args) {
-//		DotsAndBoxes d = new DotsAndBoxes(3,3);
-//		d.countOpenChains();
+		DotsAndBoxes d = new DotsAndBoxes(3,3);
+		d.countOpenChains();
 //		
 //		BfsGraphTraversal bfs = new BfsGraphTraversal();
 //		DfsGraphTraversal dfs = new DfsGraphTraversal();
@@ -24,14 +24,14 @@ public class Driver {
 		
 		
 		DotsAndBoxesTest test = new DotsAndBoxesTest();
-//		test.testOwner(); //2 Passed
-//		test.testDoubleCrosses(); //2 Passed
-//		test.testCycle(); //2 Passed
-		test.testChains(); //1 Passed
-//		test.testTwoChains(); //2
+		test.testOwner(); //2
+		test.testDoubleCrosses(); //2
+		test.testCycle(); //2
+		test.testChains(); //1
+		test.testTwoChains(); //2
 //		test.testInternalChains(); //2
 //		test.testInternalChain(); //1
-//		test.testNotAChain(); //0 0 0 Passed check again after seeing if all chain test pass
+//		test.testNotAChain(); //0 0 0
 		
 //		Scanner scan = new Scanner(System.in);
 //		DotsAndBoxes db = new DotsAndBoxes(3, 3);
