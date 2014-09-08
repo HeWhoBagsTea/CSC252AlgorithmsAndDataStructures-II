@@ -1,0 +1,16 @@
+
+public class Driver {
+
+	public static void main(String[] args) {
+		Picture pic = new Picture("overlayimagewithhiddenmessage.png");
+
+		SeamCarver sc = new SeamCarver(pic);
+		sc.calculateAllEnergy();
+		
+//		System.out.println(sc.height());
+//		System.out.println(sc.savedEnergy.length);
+		
+		for(int i = 0; i < )
+	}
+
+}

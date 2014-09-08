@@ -13,8 +13,11 @@
 		<item value="false" key="isRegEx"/>
 		<item value="false" key="incremental"/>
 		<item value="false" key="wholeword"/>
-		<item value="remove" key="selection"/>
+		<item value="***" key="selection"/>
 		<list key="findhistory">
+			<item value="***"/>
+			<item value="*"/>
+			<item value="cons"/>
 			<item value="remove"/>
 		</list>
 		<list key="replacehistory">

@@ -6,21 +6,22 @@ import java.util.Scanner;
 public class Driver {
 
 	public static void main(String[] args) {
-//		DotsAndBoxes d = new DotsAndBoxes(3,3);
-//		d.countOpenChains();
-//		
-//		BfsGraphTraversal bfs = new BfsGraphTraversal();
-//		DfsGraphTraversal dfs = new DfsGraphTraversal();
-//		List<List<Integer>> theList = new ArrayList<List<Integer>>();
-//		
-//		theList = dfs.traverse(d.graph);
-//
-//		for(int i = 0; i < theList.size(); i++) {
-//			for(int j = 0; j < theList.get(i).size(); j++) {
-//				System.out.print(theList.get(i).get(j) + " ");
-//			}
-//			System.out.println();
-//		}
+		DotsAndBoxes d = new DotsAndBoxes(3,3);
+		//d.countOpenChains();
+		
+		BfsGraphTraversal bfs = new BfsGraphTraversal();
+		DfsGraphTraversal dfs = new DfsGraphTraversal();
+		List<List<Integer>> theList = new ArrayList<List<Integer>>();
+		
+		theList = bfs.traverse(d.graph);
+		System.out.println(theList);
+		
+		/*for(int i = 0; i < theList.size(); i++) {
+			for(int j = 0; j < theList.get(i).size(); j++) {
+				System.out.print(theList.get(i).get(j) + " ");
+			}
+			System.out.println();
+		}*/
 		
 		
 		DotsAndBoxesTest test = new DotsAndBoxesTest();

@@ -1,0 +1,216 @@
+
+public class SeamCarver {
+	Picture pic;
+	double savedEnergy[][];
+	double energyVertical[][];
+	double energyHorizontal[][];
+
+	SeamCarver(Picture pic) {
+		this.pic = pic;
+		savedEnergy = new double[height() - 1][width() - 1];
+
+		for(int i = 0; i < savedEnergy.length; i++) {
+			for (int j = 0; j < savedEnergy[i].length; j++) {
+				savedEnergy[i][j] = Double.MAX_VALUE;
+			}
+		}
+	}
+
+	// get the current image
+	public Picture getPicture () {
+		return pic;
+	}
+
+	public int width() {
+		return pic.width();
+	}
+
+	public int height() {
+		return pic.height();
+	}
+
+	// the energy of a pixel at (x,y)
+	double energy(int x, int y) {
+		if (x < 0 || x >= this.width())  throw new IndexOutOfBoundsException("x must be between 0 and " + (this.width()-1));
+		if (y < 0 || y >= this.height()) throw new IndexOutOfBoundsException("y must be between 0 and " + (this.height()-1));
+
+		double r1, r2, g1, g2, b1, b2;
+
+		if((x - 1) < 0) {
+			r1 = this.getPicture().get(this.width() - 1, y).getRed();
+			g1 = this.getPicture().get(this.width() - 1, y).getGreen();
+			b1 = this.getPicture().get(this.width() - 1, y).getBlue();
+		} else {
+			r1 = this.getPicture().get(x - 1, y).getRed();
+			g1 = this.getPicture().get(x - 1, y).getGreen();
+			b1 = this.getPicture().get(x - 1, y).getBlue();
+		}
+
+		if((x + 1) > this.width() - 1) {
+			r2 = this.getPicture().get(0, y).getRed();
+			g2 = this.getPicture().get(0, y).getGreen();
+			b2 = this.getPicture().get(0, y).getBlue();
+		} else {
+			r2 = this.getPicture().get(x + 1, y).getRed();
+			g2 = this.getPicture().get(x + 1, y).getGreen();
+			b2 = this.getPicture().get(x + 1, y).getBlue();
+		}
+
+		double r = r1 - r2;
+		double g = g1 - g2;
+		double b = b1 - b2;
+		double xSquared = (r * r) + (g * g) + (b * b);
+		double ySquared = (r * r) + (g * g) + (b * b);
+		double energy = xSquared + ySquared;
+
+		savedEnergy[y][x] = energy;
+
+		return energy;
+
+	}
+
+	// the sequence of indices for a horizontal seam
+	public int[] findHorizontalSeam() {
+		int[] horizontalSeam = new int[width()];
+
+
+
+
+		return horizontalSeam;
+
+	}
+
+	// the sequence of indices for a vertical seam
+	public int[] findVerticalSeam() {
+		int[] vrticalSeam = new int[height()];
+
+		int lowestIndex = 0;
+		double lowestEnergy = energyVertical[height() - 2][0];
+		System.out.println(lowestEnergy);
+		System.out.println(Double.MAX_VALUE);
+		for(int i = 0; i < width() - 1; i++) {
+			
+		}
+
+
+		return vrticalSeam;
+
+	}
+
+	public void removeHorizontalSeam(int[] indices) {
+
+	}
+
+	public void removeVerticalSeam(int[] indices) {
+
+	}
+	
+	public void calculateAllEnergy() {
+		for(int i = 0; i < height() - 1; i++) {
+			for(int j = 0; j < width() - 1; j++) {
+				energy(j, i);
+			}
+		}
+	}
+
+	public void calculateAndEvaluateAllEnergy() {
+		for(int i = 0; i < height() - 1; i++) {
+			for(int j = 0; j < width() - 1; j++) {
+				energy(j, i);
+			}
+		}
+
+		energyVertical = savedEnergy;
+		energyHorizontal = savedEnergy;
+
+		reevaluateAllEnergy();
+	}
+
+	private void reevaluateEnergyVertical(int x, int y) {
+		if (x < 0 || x >= this.width())  throw new IndexOutOfBoundsException("x must be between 0 and " + (this.width()-1));
+		if (y < 1 || y >= this.height()) throw new IndexOutOfBoundsException("y must be between 0 and " + (this.height()-1));
+		
+		int xi1, xi2, xi3;
+		double xv1, xv2, xv3;
+		double lowest = Double.MAX_VALUE;
+		
+		xi1 = x - 1;
+		xi2 = x;
+		xi3 = x + 1;
+
+		xv2 = energyVertical[y - 1][xi2];
+
+		if(xi1 < 0) 
+			xv1 = Double.MAX_VALUE;
+		else
+			xv1 = energyVertical[y - 1][xi1];
+
+		if(xi3 > savedEnergy[0].length - 1) 
+			xv3 = Double.MAX_VALUE;
+		else
+			xv3 = energyVertical[y - 1][xi3];
+
+		lowest = xv1;
+		if(xv2 < lowest)
+			lowest = xv2;
+		if(xv3 < lowest)
+			lowest = xv3;
+
+		energyVertical[y][x] = energyVertical[y][x] + lowest;
+	}
+
+	private void reevaluateEnergyHorizontal(int x, int y) {
+		if (x < 1 || x >= this.width())  throw new IndexOutOfBoundsException("x must be between 0 and " + (this.width()-1));
+		if (y < 0 || y >= this.height()) throw new IndexOutOfBoundsException("y must be between 0 and " + (this.height()-1));
+		
+		int yi1, yi2, yi3;
+		double yv1, yv2, yv3;
+		double lowest = Double.MAX_VALUE;
+		
+		yi1 = y - 1;
+		yi2 = y;
+		yi3 = y + 1;
+		
+		yv2 = energyHorizontal[yi2][x - 1];
+		
+		if(yi1 < 0) 
+			yv1 = Double.MAX_VALUE;
+		else
+			yv1 = energyHorizontal[yi1][x - 1];
+
+		if(yi3 > savedEnergy.length - 1) 
+			yv3 = Double.MAX_VALUE;
+		else
+			yv3 = energyHorizontal[yi3][x - 1];
+		
+		lowest = yv1;
+		if(yv2 < lowest)
+			lowest = yv2;
+		if(yv3 < lowest)
+			lowest = yv3;
+		
+		energyHorizontal[y][x] = energyHorizontal[y][x] + lowest;
+	}
+
+	private void reevaluateAllEnergyVertical() {
+		for(int i = 1; i < savedEnergy.length; i++) {
+			for(int j = 0; j < savedEnergy[0].length; j++) {
+				reevaluateEnergyVertical(j,i);
+			}
+		}
+	}
+	
+	private void reevaluateAllEnergyHorizontal() {
+		for(int i = 0; i < savedEnergy.length; i++) {
+			for(int j = 1; j < savedEnergy[0].length; j++) {
+				reevaluateEnergyHorizontal(j,i);
+			}
+		}
+	}
+	
+	private void reevaluateAllEnergy() {
+		reevaluateAllEnergyVertical();
+		reevaluateAllEnergyHorizontal();
+	}
+
+}

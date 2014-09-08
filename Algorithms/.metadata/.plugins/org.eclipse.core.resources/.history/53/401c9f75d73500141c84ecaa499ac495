@@ -1,0 +1,26 @@
+
+public class Node {
+	int energy;
+	Node parent;
+	
+	Node() {
+		this.energy = 0;
+		this.parent = null;
+	}
+	
+	public void setParent(Node p) {
+		this.parent = p;
+	}
+	
+	public Node getParent() {
+		return this.parent;
+	}
+	
+	public void setEnergy(int energy) {
+		this.energy = energy;
+	}
+	
+	public int getEnergy() {
+		return this.energy;
+	}
+}

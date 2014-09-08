@@ -1,0 +1,19 @@
+
+public class Driver {
+
+	/**
+	 * @param args
+	 */
+	public static void main(String[] args) {
+		Fib fib = new Fib();
+		System.out.println(fib.fibonacci(0));
+		System.out.println(fib.fibonacci(1));
+		System.out.println(fib.fibonacci(2));
+		System.out.println(fib.fibonacci(3));
+		System.out.println(fib.fibonacci(4));
+		System.out.println(fib.fibonacci(5));
+		System.out.println(fib.fibonacci(6));
+
+	}
+
+}

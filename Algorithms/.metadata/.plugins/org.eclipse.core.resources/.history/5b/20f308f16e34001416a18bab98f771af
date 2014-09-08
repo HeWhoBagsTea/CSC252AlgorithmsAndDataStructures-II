@@ -1,0 +1,39 @@
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
+
+
+public class Driver {
+
+	public static void main(String[] args) {
+		DotsAndBoxes d = new DotsAndBoxes(3,3);
+		//d.countOpenChains();
+		
+		BfsGraphTraversal bfs = new BfsGraphTraversal();
+		DfsGraphTraversal dfs = new DfsGraphTraversal();
+		List<List<Integer>> theList = new ArrayList<List<Integer>>();
+		
+		theList = dfs.traverse(d.graph);
+		System.out.println(theList);
+		
+		/*for(int i = 0; i < theList.size(); i++) {
+			for(int j = 0; j < theList.get(i).size(); j++) {
+				System.out.print(theList.get(i).get(j) + " ");
+			}
+			System.out.println();
+		}*/
+		
+		
+		DotsAndBoxesTest test = new DotsAndBoxesTest();
+		test.testOwner(); //2 Passed
+		test.testDoubleCrosses(); //2 Passed
+		test.testCycle(); //2 Passed
+		test.testChains(); //1 Passed
+//		test.testTwoChains(); //2
+//		test.testInternalChains(); //2
+//		test.testInternalChain(); //1
+//		test.testNotAChain(); //0 0 0 Passed check again after seeing if all chain test pass
+	
+	}
+
+}

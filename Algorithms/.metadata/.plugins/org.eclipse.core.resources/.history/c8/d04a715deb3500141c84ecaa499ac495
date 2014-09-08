@@ -1,0 +1,27 @@
+
+public class Driver {
+
+	public static void main(String[] args) {
+		Picture pic = new Picture("overlayimagewithhiddenmessage.png");
+
+		SeamCarver sc = new SeamCarver(pic);
+		sc.calculateAllEnergy();
+		
+//		System.out.println(sc.height());
+//		System.out.println(sc.savedEnergy.length);
+		
+		System.out.println(sc.energyVertical[0][0]);
+		System.out.println(sc.energyVertical[0][1]);
+		System.out.println(sc.energyVertical[0][2]);
+		System.out.println();
+		System.out.println(sc.energyVertical[1][0]);
+		System.out.println(sc.energyVertical[1][1]);
+		System.out.println(sc.energyVertical[1][2]);
+		System.out.println();
+//		System.out.println(sc.savedEnergy[2][0]);
+		System.out.println(sc.energyVertical[2][1]);
+//		System.out.println(sc.savedEnergy[2][2]);
+		System.out.println();
+	}
+
+}

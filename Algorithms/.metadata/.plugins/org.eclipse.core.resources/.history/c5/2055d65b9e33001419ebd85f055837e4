@@ -1,0 +1,20 @@
+
+public class Driver {
+
+	/**
+	 * @param args
+	 */
+	public static void main(String[] args) {
+		Fib fib = new Fib();
+		System.out.println(fib.fib(-1));
+		System.out.println(fib.fib(1));
+		System.out.println(fib.fib(2));
+		System.out.println(fib.fib(3));
+		System.out.println(fib.fib(4));
+		System.out.println(fib.fib(5));
+		System.out.println(fib.fib(6));
+		System.out.println(fib.fib(7));
+
+	}
+
+}
